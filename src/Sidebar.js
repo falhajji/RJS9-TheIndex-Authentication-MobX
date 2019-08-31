@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 // Logo
 import logo from "./assets/theindex.svg";
@@ -15,6 +15,14 @@ const Sidebar = () => {
         <h4 className="menu-item">
           <NavLink to="/books">BOOKS</NavLink>
         </h4>
+        <Link to="/loginform">
+          <button className="btn btn-primary" type="submit">
+            Login
+          </button>
+        </Link>
+        <Link to="/signupform">
+          <button className="btn btn-primary">Sign Up</button>
+        </Link>
       </section>
     </div>
   );

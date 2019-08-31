@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { observer } from "mobx-react";
+
+// Store
+// import authStore from "./stores/authStore";
+// <--- Hi Aziz, this import isn't working
 
 class Signup extends Component {
   state = {
@@ -14,7 +19,9 @@ class Signup extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    alert("I DON'T WORK YET");
+    alert("I DON'T WORK YET to submit");
+    // authStore.signup(this.state);
+    this.props.history.push("/");
   };
 
   render() {
@@ -76,4 +83,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default observer(Signup);
