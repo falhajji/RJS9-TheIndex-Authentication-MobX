@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
 
 // Store
-// import authStore from "./stores/authStore";
-// <--- Hi Aziz, this import isn't working
+import authStore from "../stores/AuthStore";
 
 class Signup extends Component {
   state = {
@@ -19,8 +18,7 @@ class Signup extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    alert("I DON'T WORK YET to submit");
-    // authStore.signup(this.state);
+    authStore.signup(this.state);
     this.props.history.push("/");
   };
 

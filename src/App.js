@@ -16,6 +16,7 @@ import SignupForm from "./forms/SignupForm";
 // Store
 import authorStore from "./stores/AuthorStore";
 import bookStore from "./stores/BookStore";
+import authStore from "./stores/AuthStore";
 
 function App() {
   const getView = () => {
@@ -28,8 +29,17 @@ function App() {
           <Route path="/authors/:authorID" component={AuthorDetail} />
           <Route path="/authors/" component={AuthorsList} />
           <Route path="/books/:bookColor?" component={BookList} />
-          <Route path="/loginform" component={LoginForm} />
-          <Route path="/signupform" component={SignupForm} />
+          {authStore.user ? (
+            <>
+              <Redirect from="/loginform" to="/" />
+              <Redirect from="/signupform" to="/" />
+            </>
+          ) : (
+            <>
+              <Route path="/loginform" component={LoginForm} />
+              <Route path="/signupform" component={SignupForm} />
+            </>
+          )}
         </Switch>
       );
     }

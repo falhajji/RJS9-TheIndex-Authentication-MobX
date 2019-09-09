@@ -1,8 +1,11 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { observer } from "mobx-react";
 
 // Logo
 import logo from "./assets/theindex.svg";
+
+import authStore from "./stores/AuthStore";
 
 const Sidebar = () => {
   return (
@@ -15,17 +18,27 @@ const Sidebar = () => {
         <h4 className="menu-item">
           <NavLink to="/books">BOOKS</NavLink>
         </h4>
-        <Link to="/loginform">
-          <button className="btn btn-primary" type="submit">
-            Login
-          </button>
-        </Link>
         <Link to="/signupform">
           <button className="btn btn-primary">Sign Up</button>
         </Link>
+        {authStore.user ? (
+          <button
+            className="btn btn-primary"
+            type="submit"
+            onClick={() => authStore.logout()}
+          >
+            Logout
+          </button>
+        ) : (
+          <Link to="/loginform">
+            <button className="btn btn-primary" type="submit">
+              Login
+            </button>
+          </Link>
+        )}
       </section>
     </div>
   );
 };
 
-export default Sidebar;
+export default observer(Sidebar);

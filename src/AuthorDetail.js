@@ -8,6 +8,7 @@ import AddBookModal from "./AddBookModal";
 // Stores
 import authorStore from "./stores/AuthorStore";
 import bookStore from "./stores/BookStore";
+import authStore from "./stores/AuthStore";
 
 const AuthorDetail = props => {
   const authorID = props.match.params.authorID;
@@ -25,7 +26,7 @@ const AuthorDetail = props => {
         />
       </div>
       <BookTable books={books} />
-      <AddBookModal author={author} />
+      {authStore.user && <AddBookModal author={author} />}
     </div>
   );
 };
